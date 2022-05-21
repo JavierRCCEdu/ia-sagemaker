@@ -48,3 +48,10 @@ if __name__ == "__main__":
 
     # Print the coefficients of the trained classifier, and save the coefficients
     joblib.dump(clf, os.path.join(args.model_dir, "model.joblib"))
+    
+def model_fn(model_dir):
+    """Deserialized and return fitted model
+    Note that this should have the same name as the serialized model in the main method
+    """
+    clf = joblib.load(os.path.join(model_dir, "model.joblib"))
+    return clf
